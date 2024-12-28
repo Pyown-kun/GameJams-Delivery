@@ -37,6 +37,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void PlayerShootBullet()
     {
+
         if (bulletAmount > 0)
         {
 
