@@ -6,6 +6,8 @@ using UnityEngine.Rendering;
 
 public class Enemy : MonoBehaviour
 {
+    public FieldOfView fov;
+
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
     [SerializeField] private float timeIdle;
@@ -28,7 +30,6 @@ public class Enemy : MonoBehaviour
         targetIndex = 0;
 
         idle = timeIdle;
-
     }
 
     private void Update()
@@ -50,18 +51,26 @@ public class Enemy : MonoBehaviour
     private void Idle()
     {
         idle -= Time.deltaTime;
+        Debug.Log("idle");
 
         if(idle <= 0)
         {
             targetIndex = (targetIndex + 1) % waypoint.Length;
             state = AIState.Patrol;
         }
-
+        
         //FOV Code Should Here
+        if (fov.CanSeePlayer)
+        {
+            state = AIState.Chase;
+        }
+
     }
 
     private void Patrol()
     {
+        Debug.Log("Patrol");
+
         agent.SetDestination(waypoint[targetIndex].position);
 
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
@@ -71,10 +80,16 @@ public class Enemy : MonoBehaviour
         }
 
         //FOV Code Should Here
+        if (fov.CanSeePlayer)
+        {
+            state = AIState.Chase;
+        }
     }
 
     private void Chase()
     {
+        Debug.Log("Chase");
+
         agent.SetDestination(target.position);
     }
 
