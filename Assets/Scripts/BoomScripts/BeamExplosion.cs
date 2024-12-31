@@ -53,5 +53,11 @@ public class BeamExplosion : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        
+        if (collision.gameObject.tag == "Player")
+        {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(1);
+        }
     }
 }

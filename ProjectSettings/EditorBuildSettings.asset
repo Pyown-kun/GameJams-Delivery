@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/FullHDScenes/MainMenu.unity
+    guid: b0df71295159d014d956441f7e1fa589
+  - enabled: 1
+    path: Assets/Scenes/FullHDScenes/Level1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/FullHDScenes/Victory.unity
+    guid: 2073cd8cacffa9445bc91be46e78b57d
+  - enabled: 1
+    path: Assets/Scenes/FullHDScenes/GameOver.unity
+    guid: ba7124cabd196a54fac9c88cb180dedb
+  - enabled: 1
+    path: Assets/Scenes/FullHDScenes/Level2.unity
+    guid: 71d3682275790624cb81abf1df793eac
   m_configObjects: {}

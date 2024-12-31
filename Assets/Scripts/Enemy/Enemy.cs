@@ -10,7 +10,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
+    [SerializeField] private float wait = 1f;
     [SerializeField] private float timeIdle;
+    [SerializeField] private GameObject enemyAttack;
     [SerializeField] private Transform[] waypoint;
 
     private float idle;
@@ -30,10 +32,13 @@ public class Enemy : MonoBehaviour
         targetIndex = 0;
 
         idle = timeIdle;
+
     }
 
     private void Update()
     {
+        EnemyAttack();
+
         switch (state)
         {
             case AIState.Idle:
@@ -91,6 +96,24 @@ public class Enemy : MonoBehaviour
         Debug.Log("Chase");
 
         agent.SetDestination(target.position);
+    }
+
+    private void EnemyAttack()
+    {
+        wait -= Time.deltaTime;
+
+        if (wait <= 0)
+        {
+            enemyAttack.SetActive(true);
+            if (wait <= -1)
+            {
+                wait = 1;
+            }
+        }
+        else
+        {
+            enemyAttack.SetActive(false);
+        }
     }
 
     private enum AIState

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class BoomSpawn : MonoBehaviour
 {
+    public Pause Pause;
     public Image BoomCooldownFill;
 
     [SerializeField] private GameObject boomPrefeb;
@@ -35,15 +36,19 @@ public class BoomSpawn : MonoBehaviour
 
     private void BoomPlaced()
     {
+        
         if (!inCooldown)
-        {
-            Instantiate(boomPrefeb, transform.position, Quaternion.identity);
+            {
+                if (!Pause.IsPause)
+                {
+                    Instantiate(boomPrefeb, transform.position, Quaternion.identity);
 
-            maxFillBoomCooldown = boomCooldown;
-            fillBoomCooldown = boomCooldown;
+                    maxFillBoomCooldown = boomCooldown;
+                    fillBoomCooldown = boomCooldown;
 
-            StartCoroutine(BoomCooldown());
-        }
+                    StartCoroutine(BoomCooldown());
+                }
+            }
     }
 
     private IEnumerator BoomCooldown()

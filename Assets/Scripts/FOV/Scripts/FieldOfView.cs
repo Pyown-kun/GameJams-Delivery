@@ -9,6 +9,8 @@ public class FieldOfView : MonoBehaviour
     [Range(0, 360)]
     public float Angle;
 
+    public GameObject PlayerRef;
+
     public LayerMask PlayerMask;
     public LayerMask ObstructionMask;
 
@@ -16,6 +18,7 @@ public class FieldOfView : MonoBehaviour
 
     private void Start()
     {
+        PlayerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
 

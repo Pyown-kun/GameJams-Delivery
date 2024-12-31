@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
+    public Pause Pause;
     public Text BulletText;
 
     [SerializeField] private Rigidbody2D bulletPrefeb;
@@ -37,15 +39,17 @@ public class PlayerShoot : MonoBehaviour
 
     private void PlayerShootBullet()
     {
-
-        if (bulletAmount > 0)
+        if (!Pause.IsPause)
         {
+            if (bulletAmount > 0)
+            {
 
-            Rigidbody2D instance = Instantiate(bulletPrefeb, bulletSpawn.position, bulletSpawn.rotation) as Rigidbody2D;
+                Rigidbody2D instance = Instantiate(bulletPrefeb, bulletSpawn.position, bulletSpawn.rotation) as Rigidbody2D;
 
-            instance.AddForce(bulletSpawn.up * power);
+                instance.AddForce(bulletSpawn.up * power);
 
-            bulletAmount -= 1;
+                bulletAmount -= 1;
+            }
         }
     }
 
