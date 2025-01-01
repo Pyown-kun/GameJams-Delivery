@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour
 
     private void Patrol()
     {
+        
         Debug.Log("Patrol");
 
         agent.SetDestination(waypoint[targetIndex].position);
@@ -94,7 +95,7 @@ public class Enemy : MonoBehaviour
     private void Chase()
     {
         Debug.Log("Chase");
-
+        
         agent.SetDestination(target.position);
     }
 

@@ -30,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AudioManager.Instance.Knife.Play();
         health -= damage;
         StartCoroutine(ChangeMaterial());
     }

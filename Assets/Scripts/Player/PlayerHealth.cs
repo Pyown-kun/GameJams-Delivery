@@ -31,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            AudioManager.Instance.GamePlayBGM.Stop();
+            AudioManager.Instance.GamePlayBGMLoop.Stop();
+            AudioManager.Instance.Lose.Play();
+            
             SceneManager.LoadScene(3);
         }
     }
@@ -41,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= damage;
             StartCoroutine(ChangeMaterial());
+            AudioManager.Instance.Knife.Play();
         }
     }
     private IEnumerator ChangeMaterial()

@@ -29,6 +29,8 @@ public class Pause : MonoBehaviour
 
     private void PauseMenu()
     {
+        AudioManager.Instance.Button.Play();
+
         if (IsPause)
         {
             Resume();

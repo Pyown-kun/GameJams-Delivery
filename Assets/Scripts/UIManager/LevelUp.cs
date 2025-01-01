@@ -9,7 +9,18 @@ public class LevelUp : MonoBehaviour
 
     public void ChangeScene()
     {
+        if(numberScene != 2)
+        {
+            AudioManager.Instance.Door.Play();
+        }
+        else
+        {
+            AudioManager.Instance.Win.Play();
+            AudioManager.Instance.GamePlayBGM.Stop();
+            AudioManager.Instance.GamePlayBGMLoop.Stop();
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene(numberScene);
+        AudioManager.Instance.Button.Play();
     }
 }

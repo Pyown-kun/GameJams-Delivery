@@ -21,6 +21,7 @@ public class BoomController : MonoBehaviour
 
         if (timeBeforeExplode <= 0)
         {
+            AudioManager.Instance.Explosion.Play();
             Detonate();
             Destroy(gameObject);
         }

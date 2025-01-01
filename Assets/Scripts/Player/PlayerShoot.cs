@@ -43,7 +43,7 @@ public class PlayerShoot : MonoBehaviour
         {
             if (bulletAmount > 0)
             {
-
+                AudioManager.Instance.Shoot.Play();
                 Rigidbody2D instance = Instantiate(bulletPrefeb, bulletSpawn.position, bulletSpawn.rotation) as Rigidbody2D;
 
                 instance.AddForce(bulletSpawn.up * power);
